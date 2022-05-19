@@ -1,10 +1,10 @@
-# An Alfred 2/3 Workflow for Pass
-
-[Pacmax Page](https://pacmax.org/pac/cgenie-alfred-pass/)
+# An Alfred 4 Workflow for Pass
 
 [Alfred forum page](https://www.alfredforum.com/topic/8471-pass-the-standard-unix-password-manager/)
 
-This is an Alfred 2/3 workflow for [Pass - the standard Unix password manager](https://www.passwordstore.org/). It's based on [passmenu](http://git.zx2c4.com/password-store/tree/contrib/dmenu/passmenu), which is available for Linux.
+This is an Alfred 4 workflow for [Pass - the standard Unix password manager](https://www.passwordstore.org/). It's based on [passmenu](http://git.zx2c4.com/password-store/tree/contrib/dmenu/passmenu), which is available for Linux.
+
+Forked from [CGenie's Github repo](https://github.com/CGenie/alfred-pass)
 
 ## Setup
 

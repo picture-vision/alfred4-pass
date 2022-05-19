@@ -4,6 +4,8 @@
 <dict>
 	<key>bundleid</key>
 	<string>pl.intrepidus.pass</string>
+	<key>category</key>
+	<string>Tools</string>
 	<key>connections</key>
 	<dict>
 		<key>06C9C4A9-38CE-441A-8D06-E2F2D8B39B60</key>
@@ -76,6 +78,8 @@
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -95,7 +99,7 @@
 				<key>runningsubtext</key>
 				<string></string>
 				<key>script</key>
-				<string>python pass-filter.py "{query}"</string>
+				<string>python3 pass-filter.py "{query}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -114,7 +118,7 @@
 			<key>uid</key>
 			<string>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -146,6 +150,8 @@
 				<false/>
 				<key>clipboardtext</key>
 				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
 				<key>transient</key>
 				<true/>
 			</dict>
@@ -154,7 +160,7 @@
 			<key>uid</key>
 			<string>C7B97C94-3D0B-471E-96EE-A441A1FAB184</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -207,6 +213,8 @@
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -226,7 +234,7 @@
 				<key>runningsubtext</key>
 				<string></string>
 				<key>script</key>
-				<string>python pass-filter.py "{query}"</string>
+				<string>python3 pass-filter.py "{query}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -245,7 +253,7 @@
 			<key>uid</key>
 			<string>967E625E-D870-4298-9A7A-97C043740D99</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -272,8 +280,8 @@
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>A workflow to integrate with Pass - the standard Unix password manager.
-See the README file at https://github.com/CGenie/alfred-pass for more info.</string>
+	<string>An Alfred4 workflow to integrate with Pass - the standard Unix password manager.
+See the README file at https://github.com/picture-vision/alfred-pass for more info.</string>
 	<key>uidata</key>
 	<dict>
 		<key>06C9C4A9-38CE-441A-8D06-E2F2D8B39B60</key>
@@ -327,8 +335,8 @@ See the README file at https://github.com/CGenie/alfred-pass for more info.</str
 		</dict>
 	</dict>
 	<key>version</key>
-	<string>0.3.4</string>
+	<string>0.4.0</string>
 	<key>webaddress</key>
-	<string>https://github.com/CGenie/alfred-pass</string>
+	<string>https://github.com/picture-vision/alfred-pass</string>
 </dict>
 </plist>

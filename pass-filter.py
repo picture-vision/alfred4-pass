@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 import fnmatch
 import os
 import sys
@@ -7,17 +5,16 @@ import string
 
 fuzzysearch = True
 try:
+    from fuzzywuzzy import fuzz
     from fuzzywuzzy import process
 except:
     fuzzysearch = False
 
-
 QUERY = sys.argv[1]
+
 HOME = os.environ['HOME']
 PASS_DIR = os.environ.get('PASSWORD_STORE_DIR',os.path.join(HOME, '.password-store/'))
 
-
-# TODO: list_passwords creates cache of passwords for first time
 def list_passwords():
     ret = []
 
@@ -26,58 +23,48 @@ def list_passwords():
             ret.append(os.path.join(root, filename.replace('.gpg','')).replace(PASS_DIR, ''))
     return sorted(ret, key=lambda s: s.lower())
 
-
 def search_passwords(query):
     ''' Search passwords using the Fuzzy search method if fuzzywuzzy is available,
     or default to the filter-based search otherwise'''
-    if fuzzysearch:
-        return search_passwords_fuzzy(query)
+    # disable fuzzy search for now
+    # if fuzzysearch:
+    #     return search_passwords_fuzzy(query)
     return search_passwords_filter(query)
-
-
-def search_passwords_fuzzy(query):
-    ''' Search passwords using the Fuzzy search method using fuzzywuzzy'''
-    passwords = list_passwords()
-    return [entry[0] for entry in process.extract(query, passwords)]
-
 
 def search_passwords_filter(query):
     ''' Search passwords using the filter-based search, which doesn't require fuzzywuzzy'''
     ret = []
 
-    terms = filter(lambda x: x, query.lower().split())
+    queryElems = query.split('.')
+
     passwords = list_passwords()
-
     for password in passwords:
-        for t in terms:
-            if t not in password.lower():
-                break
-        else:
+        elemCnt = 0
+        if password.lower().__contains__(query):
             ret.append(password)
-
     return ret
 
+# fuzzy search is still in progress
+def search_passwords_fuzzy(query):
+    ''' Search passwords using the Fuzzy search method using fuzzywuzzy'''
+    passwords = list_passwords()
+    # return [entry[0] for entry in process.extract(query, passwords, limit=999)]
+    return process.extractBests(query, passwords, limit=99, scorer=fuzz.token_sort_ratio)
 
-def xmlize_items(items, query):
+def xmlize_items(items):
     items_a = []
 
     for item in items:
-        list = string.rsplit(item, "/", 1)
+        list = item.rsplit("/", 1)
         name = list[-1]
         path = item if len(list) == 2 else ""
-
-        complete = item
-        if item.lower().startswith(query.lower()):
-            i = item.find("/", len(query))
-            if i != -1:
-                complete = item[:(i+1)]
-
+        
         items_a.append("""
-    <item uid="%(item)s" arg="%(item)s" autocomplete="%(complete)s">
+    <item uid="%(item)s" arg="%(item)s" autocomplete="%(item)s">
         <title>%(name)s</title>
         <subtitle>%(path)s</subtitle>
     </item>
-        """ % {'item': item, 'name': name, 'path': path, 'complete': complete})
+        """ % {'item': item, 'name': name, 'path': path, 'complete': item})
 
     return """
 <?xml version="1.0"?>
@@ -86,7 +73,5 @@ def xmlize_items(items, query):
 </items>
     """ % '\n'.join(items_a)
 
-
 items = search_passwords(QUERY)
-print xmlize_items(items, QUERY)
-
+print(xmlize_items(items))
