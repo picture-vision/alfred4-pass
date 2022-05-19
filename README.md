@@ -40,8 +40,18 @@ After 7200 seconds, GPG will forget your master password.
 
 ## Installation
 
-After your system is set up as described above, download the latest package from
-[Pacmax](https://pacmax.org/pac/cgenie-alfred-pass/). Locate the file in Finder, right-click
+After your system is set up as described above you have to build it. 
+
+Currently there are now downloads available. 
+
+
+To generate the `pass.alfredworkflow` file (which you can import to Alfred), just use
+
+```
+make
+```
+
+Locate the file in Finder, right-click
 on it and choose 'Open With -> Alfred'. You will be prompted to install the workflow, so go ahead.
 Next fire up the Alfred console (`Alt-Space` by default) and type one of the commands described below.
 
