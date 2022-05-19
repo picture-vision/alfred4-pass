@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>pl.intrepidus.pass</string>
+	<string>com.picture-vision.alfred-pass</string>
 	<key>category</key>
 	<string>Tools</string>
 	<key>connections</key>
@@ -62,7 +62,7 @@
 		</array>
 	</dict>
 	<key>createdby</key>
-	<string>Przemek Kamiński</string>
+	<string>picture-vision</string>
 	<key>description</key>
 	<string>Pass integration</string>
 	<key>disabled</key>
